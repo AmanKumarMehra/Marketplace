@@ -7,9 +7,9 @@ require('chai')
 contract('Marketplace', ([deployer, seller, buyer]) => {
   let marketplace
 
-  before(async () => {
-    marketplace = await Marketplace.deployed()
-  })
+  before(async () => {    
+    marketplace = await Marketplace.deployed() // we can use await keyword only in context with async
+  })                                           // we use await function bcoz all blockchain functions are asynchronous
 
   describe('deployment', async () => {
     it('deploys successfully', async () => {
@@ -26,6 +26,8 @@ contract('Marketplace', ([deployer, seller, buyer]) => {
     })
   })
 
+
+  //Complete  description of product 
   describe('products', async () => {
     let result, productCount
 
@@ -85,7 +87,7 @@ contract('Marketplace', ([deployer, seller, buyer]) => {
         // Check that seller received funds
         let newSellerBalance
         newSellerBalance = await web3.eth.getBalance(seller)
-        newSellerBalance = new web3.utils.BN(newSellerBalance)
+        newSellerBalance = new web3.utils.BN(newSellerBalance) // BN() is used for big number addition
       
         let price
         price = web3.utils.toWei('1', 'Ether')

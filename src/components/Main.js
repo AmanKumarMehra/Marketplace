@@ -1,17 +1,21 @@
 import React, { Component } from 'react';
-
+import './main.css'
 class Main extends Component {
 
   render() {
     return (
-      <div id="content">
+      <div id="content" class="centertext">
         <h1>Add Product</h1>
         <form onSubmit={(event) => {
           event.preventDefault()
           const name = this.productName.value
           const price = window.web3.utils.toWei(this.productPrice.value.toString(), 'Ether')
           //console.log(name, price)
+
+          //////////////////////////////////////
           this.props.createProduct(name, price)
+
+
         }}>
           <div className="form-group mr-sm-2">
             <input
@@ -31,9 +35,12 @@ class Main extends Component {
               placeholder="Product Price"
               required />
           </div>
-          <button type="submit" className="btn btn-primary">Add Product</button>
+          <button type="submit" className="btn btn-dark form-button">Add Product</button>
         </form>
         <p> </p>
+
+
+       
         <h2>Buy Product</h2>
         <table className="table">
           <thead>
@@ -56,7 +63,7 @@ class Main extends Component {
                 <td>{product.owner}</td>
                 <td>
                   { !product.purchased
-                    ? <button
+                    ? <button className='form-button'
                         name={product.id}
                         value={product.price}
                         onClick={(event) => {

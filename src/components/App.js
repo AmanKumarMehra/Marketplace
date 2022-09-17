@@ -17,7 +17,7 @@ class App extends Component {
   async loadWeb3() {
     if (window.ethereum) {
       await window.ethereum.send('eth_requestAccounts');
-      window.web3 = new Web3(window.ethereum);
+      window.web3 = new Web3(window.ethereum);  // establishing connection with blockchain
       return true;
     }else{
       window.alert('Non-Ethereum browser detected. You should consider trying MetaMask!')
@@ -83,8 +83,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <Navbar account={this.state.account} />
-        <div className="container-fluid mt-5">
+        <Navbar  account={this.state.account} />
+        <div className="container-fluid mt-5 aman">
           <div className="row">
           <main role="main" className="col-lg-12 d-flex">
           { 
